@@ -1,0 +1,25 @@
+{
+  "name": "PolymerTest",
+  "authors": [
+    "\"Juanjo Escribano <juanjo.escribano@gmail.com>\""
+  ],
+  "description": "A simple Polymer component",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "Polymer",
+    "Example"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.7.1"
+  }
+}

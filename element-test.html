@@ -1,0 +1,57 @@
+<link rel='import' href='bower_components/polymer/polymer.html'><link>
+<dom-module id='element-test'>
+  <template>
+    <style>
+      :host {
+        --top: '100px';
+        --left:'100px';
+      }
+      .span-style {
+        background-color: #c6c6c6;
+        position: relative;
+        top: var(--top, '100px');
+        left: var(--left, '100px');;
+      }
+    </style>
+    <span class="span-style">This is a test element. Top: {{top_position}}. Left: {{left_position}}</span>
+  </template>
+  <script>
+    Polymer ({
+      is:'element-test',
+      properties: {
+        top_position: {
+          type: String,
+          value: '100px'
+        },
+        left_position: {
+          type: String,
+          value: '100px'
+        }
+      },
+      listeners: {
+        'tap': 'spanPressed',
+        'track': 'spanTracked'
+      },
+      spanPressed: function() {
+        console.log('WTF!');
+      },
+      spanTracked: function(e) {
+          switch (e.detail.state) {
+            case 'track':
+              this.top_position = e.detail.y;
+              this.left_position = e.detail.x;
+              this.customStyle['--top'] = this.top_position + 'px';
+              this.customStyle['--left'] = this.left_position + 'px';
+              this.updateStyles();
+              break;
+            case 'start':
+              console.log('From X:' + e.detail.x + '; Y: ' + e.detail.y);
+              break
+            case 'end':
+              console.log('To X:' + e.detail.x + '; Y: ' + e.detail.y);
+              break
+          };
+      }
+    });
+  </script>
+</dom-module>
